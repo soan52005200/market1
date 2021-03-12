@@ -38,7 +38,7 @@ public class DataProviderJDBCTest extends BeanTest{
     public void registerCustomerSuccess() {
         Result<Customer> result;
 //        save bean
-        result = jdbc.register(createCustomer(1l, "Andrew", 18));
+        result = jdbc.register(createCustomer());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), SUCCESS);
 
@@ -49,7 +49,7 @@ public class DataProviderJDBCTest extends BeanTest{
         Result<Customer> result;
 //
 //        save bean unsuccessful
-        result = jdbc.register(createCustomer(1l, "Andrew", 18));
+        result = jdbc.register(createCustomer());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
 
@@ -73,7 +73,7 @@ public class DataProviderJDBCTest extends BeanTest{
     public void updateCustomerSuccess(){
         Result<Customer> result;
 
-        result = jdbc.editCustomer(createCustomer(1L, "Andrew", 18));
+        result = jdbc.editCustomer(createCustomer());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), SUCCESS);
     }
@@ -81,32 +81,32 @@ public class DataProviderJDBCTest extends BeanTest{
     public void updateCustomerFail(){
         Result<Customer> result;
 
-        result = jdbc.editCustomer(createCustomer(8L, "Petr", 19));
+        result = jdbc.editCustomer(createCustomer());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
     }
 
     @Test
     public void deleteCustomerSuccess() {
-        Result<Void> voidResult = jdbc.removeCustomerById(createCustomer(1l, "Andrew", 18).getId());
+        Result<Void> voidResult = jdbc.removeCustomerById(createCustomer().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), SUCCESS);}
     @Test
     public void deleteCustomerFail() {
-        Result<Void> voidResult = jdbc.removeCustomerById(createCustomer(1l, "Andrew", 18).getId());
+        Result<Void> voidResult = jdbc.removeCustomerById(createCustomer().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), UNSUCCESSFUL);}
     @Test
     public void appendEatableSuccess(){
         Result<Eatable> result;
-        result= jdbc.appendEatableProduct(createEatable(1L,new Date(),"Молоко","Агрокомплекс",20,new Date()));
+        result= jdbc.appendEatableProduct(createEatable());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), SUCCESS);
     }
     @Test
     public void appendEatableFail(){
         Result<Eatable> result;
-        result= jdbc.appendEatableProduct(createEatable(1L,new Date(),"Молоко","Агрокомплекс",20,new Date()));
+        result= jdbc.appendEatableProduct(createEatable());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
     }
@@ -129,25 +129,25 @@ public class DataProviderJDBCTest extends BeanTest{
 
     @Test
     public void deleteEatableSuccess() {
-        Result<Void> voidResult = jdbc.removeCustomerById(createCustomer(1l, "Andrew", 18).getId());
+        Result<Void> voidResult = jdbc.removeCustomerById(createCustomer().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), SUCCESS);}
     @Test
     public void deleteEatableFail() {
-        Result<Void> voidResult = jdbc.removeCustomerById(createCustomer(1l, "Andrew", 18).getId());
+        Result<Void> voidResult = jdbc.removeCustomerById(createCustomer().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), UNSUCCESSFUL);}
     @Test
     public void appendUneatableSuccess(){
         Result<Uneatable> result;
-        result= jdbc.appendUneatableProduct(createUneatable(1L,new Date(),"Молоко","Агрокомплекс",20));
+        result= jdbc.appendUneatableProduct(createUneatable());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), SUCCESS);
     }
     @Test
     public void appendUneatableFail(){
         Result<Uneatable> result;
-        result= jdbc.appendUneatableProduct(createUneatable(1L,new Date(),"Молоко","Агрокомплекс",20));
+        result= jdbc.appendUneatableProduct(createUneatable());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
     }
@@ -170,12 +170,12 @@ public class DataProviderJDBCTest extends BeanTest{
 
     @Test
     public void deleteUneatableSuccess() {
-        Result<Void> voidResult = jdbc.removeUneatableProductById(createUneatable(1L,new Date(),"Молоко","Агрокомплекс",20).getId());
+        Result<Void> voidResult = jdbc.removeUneatableProductById(createUneatable().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), SUCCESS);}
     @Test
     public void deleteUneatableFail() {
-        Result<Void> voidResult = jdbc.removeUneatableProductById(createUneatable(1L,new Date(),"Молоко","Агрокомплекс",20).getId());
+        Result<Void> voidResult = jdbc.removeUneatableProductById(createUneatable().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), UNSUCCESSFUL);}
 
@@ -183,27 +183,27 @@ public class DataProviderJDBCTest extends BeanTest{
     @Test
     public void createOrderSuccess(){
         Result<Order> result;
-        result= jdbc.createOrder(createOrder(1L,new Product(),new Customer()));
+        result= jdbc.createOrder(createOrder());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
     }
     @Test
     public void createOrderFail(){
         Result<Order> result;
-        result= jdbc.createOrder(createOrder(1L,new Product(),new Customer()));
+        result= jdbc.createOrder(createOrder());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
     }
 
     @Test
     public void orderDeleteSuccess() {
-        Result<Void> voidResult = jdbc.closeOrderById(createOrder(1L,new Product(),new Customer()).getId());
+        Result<Void> voidResult = jdbc.closeOrderById(createOrder().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), SUCCESS);
     }
     @Test
     public void orderDeleteFail() {
-        Result<Void> voidResult = jdbc.closeOrderById(createOrder(1L,new Product(),new Customer()).getId());
+        Result<Void> voidResult = jdbc.closeOrderById(createOrder().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), SUCCESS);
     }

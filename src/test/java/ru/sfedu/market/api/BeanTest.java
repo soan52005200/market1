@@ -22,11 +22,9 @@ public class BeanTest {
     }
 
 
-    public Customer createCustomer(Long id, String name, int age) {
+    public Customer createCustomer() {
         Customer customer = new Customer();
-        customer.setId(id);
-        customer.setFio(name);
-        customer.setAge(age);
+
 
         return customer;
         //public Product createProduct(Long id,Date receiptDate,String name,String name,String manufacturer,Integer ageLimit, )
@@ -34,35 +32,22 @@ public class BeanTest {
 
     }
 
-    public Eatable createEatable(Long id, Date receiptDate, String name, String manufacturer, Integer ageLimit,Date bestBefore) {
+    public Eatable createEatable() {
         Eatable eatable = new Eatable();
-        eatable.setId(id);
-        eatable.setReceiptDate(receiptDate);
-        eatable.setName(name);
-        eatable.setManufacturer(manufacturer);
-        eatable.setAgeLimit(ageLimit);
-        eatable.setBestBefore(bestBefore);
 
         return eatable;
 
 
     }
 
-    public Uneatable createUneatable(Long id, Date receiptDate, String name, String manufacturer, Integer ageLimit) {
-        Uneatable uneatable= new Uneatable();
-        uneatable.setId(id);
-        uneatable.setReceiptDate(receiptDate);
-        uneatable.setName(name);
-        uneatable.setManufacturer(manufacturer);
-        uneatable.setAgeLimit(ageLimit);
+    public Uneatable createUneatable() {
+       Uneatable uneatable = new Uneatable();
 
         return uneatable;
     }
-    public Order createOrder(Long id, Product product, Customer customer) {
+    public Order createOrder() {
         Order order= new Order();
-        order.setId(id);
-        order.setProduct(product);
-        order.setCustomer(customer);
+
 
         return order;
     }

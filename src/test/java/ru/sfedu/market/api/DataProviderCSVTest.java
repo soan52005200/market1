@@ -39,7 +39,7 @@ public class DataProviderCSVTest extends BeanTest{
     public void registerCustomerSuccess() {
         Result<Customer> result;
 //        save bean
-        result = csv.register(createCustomer(1l, "Andrew", 18));
+        result = csv.register(createCustomer());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), SUCCESS);
 
@@ -50,7 +50,7 @@ public class DataProviderCSVTest extends BeanTest{
         Result<Customer> result;
 //
 //        save bean unsuccessful
-        result = csv.register(createCustomer(1l, "Andrew", 18));
+        result = csv.register(createCustomer());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
 
@@ -74,7 +74,7 @@ public class DataProviderCSVTest extends BeanTest{
     public void updateCustomerSuccess(){
         Result<Customer> result;
 
-        result = csv.editCustomer(createCustomer(1L, "Andrew", 18));
+        result = csv.editCustomer(createCustomer());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), SUCCESS);
     }
@@ -82,32 +82,32 @@ public class DataProviderCSVTest extends BeanTest{
     public void updateCustomerFail(){
         Result<Customer> result;
 
-        result = csv.editCustomer(createCustomer(8L, "Petr", 19));
+        result = csv.editCustomer(createCustomer());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
     }
 
     @Test
     public void deleteCustomerSuccess() {
-        Result<Void> voidResult = csv.removeCustomerById(createCustomer(1l, "Andrew", 18).getId());
+        Result<Void> voidResult = csv.removeCustomerById(createCustomer().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), SUCCESS);}
     @Test
     public void deleteCustomerFail() {
-        Result<Void> voidResult = csv.removeCustomerById(createCustomer(1l, "Andrew", 18).getId());
+        Result<Void> voidResult = csv.removeCustomerById(createCustomer().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), UNSUCCESSFUL);}
         @Test
     public void appendEatableSuccess(){
         Result<Eatable> result;
-        result= csv.appendEatableProduct(createEatable(1L,new Date(),"Молоко","Агрокомплекс",20,new Date()));
+        result= csv.appendEatableProduct(createEatable());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), SUCCESS);
     }
     @Test
     public void appendEatableFail(){
         Result<Eatable> result;
-        result= csv.appendEatableProduct(createEatable(1L,new Date(),"Молоко","Агрокомплекс",20,new Date()));
+        result= csv.appendEatableProduct(createEatable());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
     }
@@ -130,25 +130,25 @@ public class DataProviderCSVTest extends BeanTest{
 
     @Test
     public void deleteEatableSuccess() {
-        Result<Void> voidResult = csv.removeCustomerById(createCustomer(1l, "Andrew", 18).getId());
+        Result<Void> voidResult = csv.removeCustomerById(createCustomer().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), SUCCESS);}
     @Test
     public void deleteEatableFail() {
-        Result<Void> voidResult = csv.removeCustomerById(createCustomer(1l, "Andrew", 18).getId());
+        Result<Void> voidResult = csv.removeCustomerById(createCustomer().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), UNSUCCESSFUL);}
     @Test
     public void appendUneatableSuccess(){
         Result<Uneatable> result;
-        result= csv.appendUneatableProduct(createUneatable(1L,new Date(),"Молоко","Агрокомплекс",20));
+        result= csv.appendUneatableProduct(createUneatable());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), SUCCESS);
     }
     @Test
     public void appendUneatableFail(){
         Result<Uneatable> result;
-        result= csv.appendUneatableProduct(createUneatable(1L,new Date(),"Молоко","Агрокомплекс",20));
+        result= csv.appendUneatableProduct(createUneatable());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
     }
@@ -171,12 +171,12 @@ public class DataProviderCSVTest extends BeanTest{
 
     @Test
     public void deleteUneatableSuccess() {
-        Result<Void> voidResult = csv.removeUneatableProductById(createUneatable(1L,new Date(),"Молоко","Агрокомплекс",20).getId());
+        Result<Void> voidResult = csv.removeUneatableProductById(createUneatable().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), SUCCESS);}
     @Test
     public void deleteUneatableFail() {
-        Result<Void> voidResult = csv.removeUneatableProductById(createUneatable(1L,new Date(),"Молоко","Агрокомплекс",20).getId());
+        Result<Void> voidResult = csv.removeUneatableProductById(createUneatable().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), UNSUCCESSFUL);}
 
@@ -184,27 +184,27 @@ public class DataProviderCSVTest extends BeanTest{
     @Test
     public void createOrderSuccess(){
         Result<Order> result;
-        result= csv.createOrder(createOrder(1L,new Product(),new Customer()));
+        result= csv.createOrder(createOrder());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
     }
     @Test
     public void createOrderFail(){
         Result<Order> result;
-        result= csv.createOrder(createOrder(1L,new Product(),new Customer()));
+        result= csv.createOrder(createOrder());
         System.out.println(result.toString());
         assertEquals(result.getStatus(), UNSUCCESSFUL);
     }
 
     @Test
     public void orderDeleteSuccess() {
-        Result<Void> voidResult = csv.closeOrderById(createOrder(1L,new Product(),new Customer()).getId());
+        Result<Void> voidResult = csv.closeOrderById(createOrder().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), SUCCESS);
     }
     @Test
     public void orderDeleteFail() {
-        Result<Void> voidResult = csv.closeOrderById(createOrder(1L,new Product(),new Customer()).getId());
+        Result<Void> voidResult = csv.closeOrderById(createOrder().getId());
         System.out.println(voidResult.toString());
         assertEquals(voidResult.getStatus(), SUCCESS);
     }
